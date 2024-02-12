@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\MetricHistoryRunController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/list-history-metrics', [MetricHistoryRunController::class, 'metricHistory'])->name('list-history-metrics');
+Route::post('/get-metrics', [MetricHistoryRunController::class, 'getMetrics'])->name('get-metrics');

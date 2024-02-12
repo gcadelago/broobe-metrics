@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('metric_history_runs', function (Blueprint $table) {
             $table->id();
             $table->string('url', 255);
-            $table->float('accesibility_metric');
-            $table->float('pwa_metric');
-            $table->float('performance_metric');
-            $table->float('seo_metric');
-            $table->float('best_practices_metric');
+            $table->float('accessibility_metric')->nullable();
+            $table->float('pwa_metric')->nullable();
+            $table->float('performance_metric')->nullable();
+            $table->float('seo_metric')->nullable();
+            $table->float('best_practices_metric')->nullable();
             $table->timestamps();
         });
     }

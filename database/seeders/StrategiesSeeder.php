@@ -10,7 +10,7 @@ class StrategiesSeeder extends Seeder
     public function run(): void
     {
         if (!DB::table('strategies')->find(1)) {
-            DB::table('strategies')->insert(
+            DB::table('strategies')->insert([
                 [
                     'id'   => 1,
                     'name' => 'DESKTOP',
@@ -19,7 +19,7 @@ class StrategiesSeeder extends Seeder
                     'id'   => 2,
                     'name' => 'MOBILE',
                 ]
-            );
+            ]);
         }
     }
 }

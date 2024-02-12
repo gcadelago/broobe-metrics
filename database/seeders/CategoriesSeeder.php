@@ -10,7 +10,7 @@ class CategoriesSeeder extends Seeder
     public function run(): void
     {
         if (!DB::table('categories')->find(1)) {
-            DB::table('categories')->insert(
+            DB::table('categories')->insert([
                 [
                     'id'   => 1,
                     'name' => 'ACCESSIBILITY',
@@ -31,7 +31,7 @@ class CategoriesSeeder extends Seeder
                     'id'   => 5,
                     'name' => 'SEO',
                 ]
-            );
+            ]);
         }
     }
 }
