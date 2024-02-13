@@ -37,12 +37,28 @@ class MetricHistoryRunController extends Controller
                     $categoryScores[$category['title']] = $category['score'];
                 }
 
-                MetricHistoryRunService::save([ 'urlMetric' => $urlMetric, 'strategyId' => $strategyId, 'categoryScores' => $categoryScores ]);
-
                 return response()->json($categoryScores, 200);
             } else {
                 return response()->json(['error' => 'No se encontraron categorías en la respuesta.'], 500);
             }
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function saveMetrics(Request $request)
+    {
+
+        try {
+            $strategyId = Strategy::where('name', $request->strategy)->first()->id;
+
+            MetricHistoryRunService::save([
+                'url'        => $request->url,
+                'strategyId' => $strategyId,
+                'categories' => $request->categories
+            ]);
+
+            return response()->json('Save successfuly', 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

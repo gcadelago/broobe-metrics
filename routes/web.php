@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('change-language/{locale}', function ($locale) {
+    App::setLocale($locale);
+    session()->put('locale', $locale);
+    return Redirect::route('index');
+})->name('change-language');

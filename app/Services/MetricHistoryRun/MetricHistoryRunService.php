@@ -29,18 +29,18 @@ class MetricHistoryRunService
     public static function save(array $params)
     {
         // Extract array parameters
-        $urlMetric      = $params['urlMetric'];
-        $strategyId     = $params['strategyId'];
-        $categoryScores = $params['categoryScores'];
+        $urlMetric  = $params['url'];
+        $strategyId = $params['strategyId'];
+        $categories = $params['categories'];
 
         MetricHistoryRun::create([
             'url'                   => $urlMetric,
             'strategy_id'           => $strategyId,
-            'accessibility_metric'  => $categoryScores['Accessibility'] ?? null,
-            'pwa_metric'            => $categoryScores['PWA'] ?? null,
-            'performance_metric'    => $categoryScores['Performance'] ?? null,
-            'seo_metric'            => $categoryScores['SEO'] ?? null,
-            'best_practices_metric' => $categoryScores['Best Practices'] ?? null
+            'accessibility_metric'  => $categories['Accessibility'] ?? null,
+            'pwa_metric'            => $categories['PWA'] ?? null,
+            'performance_metric'    => $categories['Performance'] ?? null,
+            'seo_metric'            => $categories['SEO'] ?? null,
+            'best_practices_metric' => $categories['Best Practices'] ?? null
         ]);
     }
 

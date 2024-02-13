@@ -6,7 +6,7 @@
   <div class="container">
     <section class="card">
       <div class="card-header">
-        @include('layouts.nav-tabs')
+        @include('metrics.partials.nav-tabs')
       </div>
       <div class="card-body">
         <div class="tab-content" id="tab-content">

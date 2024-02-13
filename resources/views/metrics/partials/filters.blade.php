@@ -31,7 +31,7 @@
                 required
             >
                 @foreach ($categories as $category)
-                    <option {{ old('category' . $category->name) == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                    <option value="{{$category->name}}">{{ __($category->name)}}</option>
                 @endforeach
             </select>
             <label>{{ __('Categories') }}<span class="text-danger">*</span></label>

@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/list-history-metrics', [MetricHistoryRunController::class, 'metricHistory'])->name('list-history-metrics');
-Route::post('/get-metrics', [MetricHistoryRunController::class, 'getMetrics'])->name('get-metrics');
+Route::get('/get-metrics', [MetricHistoryRunController::class, 'getMetrics'])->name('get-metrics');
+Route::post('/save-metrics', [MetricHistoryRunController::class, 'saveMetrics'])->name('save-metrics');

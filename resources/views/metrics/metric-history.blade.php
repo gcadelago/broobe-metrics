@@ -3,13 +3,14 @@
       <div class="col-lg-12">
         <table class="table table-hover" id="historyMetricsTable">
             <thead>
-                <th>URL</th>
-                <th>ACCESSIBILITY</th>
-                <th>PWA</th>
-                <th>SEO</th>
-                <th>BEST PRACTICES</th>
-                <th>STRATEGY</th>
-                <th>DATETIME</th>
+                <th>{{ __('URL') }}</th>
+                <th>{{ __('ACCESSIBILITY') }}</th>
+                <th>{{ __('PWA') }}</th>
+                <th>{{ __('SEO') }}</th>
+                <th>{{ __('PERFORMANCE') }}</th>
+                <th>{{ __('BEST PRACTICES') }}</th>
+                <th>{{ __('STRATEGY') }}</th>
+                <th>{{ __('DATETIME') }}</th>
             </thead>
             <tbody id="historyMetrics">
             </tbody>
