@@ -1,4 +1,5 @@
 # Broobe Metrics
+![image](https://github.com/gcadelago/broobe-metrics/assets/112523235/f79f9a44-a798-498e-a7e2-c273033acd9e)
 
 ## Indice
 * <a href="#project">Sobre el proyecto</a>
