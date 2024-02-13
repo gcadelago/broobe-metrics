@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MetricHistoryRunController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +14,4 @@ use Illuminate\Support\Facades\Redirect;
 |
 */
 
-
-Route::get('/', [HomeController::class, 'index'])->name('index');
-
-Route::get('change-language/{locale}', function ($locale) {
-    App::setLocale($locale);
-    session()->put('locale', $locale);
-    return Redirect::route('index');
-})->name('change-language');
+Route::get('/', [MetricHistoryRunController::class, 'index'])->name('index');

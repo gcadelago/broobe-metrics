@@ -1,7 +1,9 @@
 import './bootstrap';
+import $ from "jquery"
 import toastr from 'toastr';
 import 'select2';
-import Chart from 'chart.js/auto';
+import 'datatables.net';
+
 toastr.options = {
     positionClass: 'toast-top-right',
     timeOut: 3000,
@@ -11,4 +13,4 @@ toastr.options = {
     preventDuplicates: true
 };
 
-export { toastr, Chart };
+export { toastr, $ };

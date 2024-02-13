@@ -8,20 +8,25 @@
         </ul>
       </div>
     @endif
-    <div class="row">
-        <div class="form-floating col-md-4 col-sm-12 ml-auto gx-1">
+    <div class="row d-flex justify-content-center">
+        <div class="form-floating col-md-3 col-sm-12 ml-auto gx-1 m-1">
             <input
                 type="text"
                 class="form-control {{ $errors->first('url') ? 'is-invalid' : '' }}"
                 id="url"
                 name="url"
                 value="{{ old('url') }}"
-                placeholder="http://example.com"
+                maxlength="255"
+                pattern="^(https?:\/\/).*$"
                 required
             />
             <label>{{ __('URL') }}<span class="text-danger">*</span></label>
+            @error('url')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            <span class="text-muted">{{ __('Example') }}: https://www.google.com</span>
         </div>
-        <div class="form-floating col-md-4 col-sm-12 pl-0 ml-auto gx-1">
+        <div class="form-floating col-md-3 col-sm-12 pl-0 ml-auto gx-1 m-1">
             <select
                 class="form-select select2 {{ $errors->first('category') ? 'is-invalid' : '' }}"
                 id="category"
@@ -31,28 +36,36 @@
                 required
             >
                 @foreach ($categories as $category)
-                    <option value="{{$category->name}}">{{ __($category->name)}}</option>
+                    <option class="option" value="{{$category->name}}">{{ __($category->name)}}</option>
                 @endforeach
             </select>
             <label>{{ __('Categories') }}<span class="text-danger">*</span></label>
+            @error('category')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-        <div class="form-floating col-md-4 col-sm-12 ml-auto gx-1">
+        <div class="form-floating col-md-3 col-sm-12 ml-auto gx-1 m-1">
             <select
                 type="text"
-                class="form-control {{ $errors->first('strategy') ? 'is-invalid' : '' }}"
+                class="form-control select2 {{ $errors->first('strategy') ? 'is-invalid' : '' }}"
                 id="strategy"
                 name="strategy"
                 value="{{ old('strategy') }}"
+                data-minimum-results-for-search="Infinity"
                 required
             >
+                <option selected hidden disabled></option>
                 @foreach ($strategies as $strategy)
                     <option {{ old('strategy') == $strategy ? 'selected' : '' }}>{{$strategy->name}}</option>
                 @endforeach
             </select>
             <label>{{ __('Strategy') }}<span class="text-danger">*</span></label>
+            @error('strategy')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
-        <div class="col-md-3 col-sm-12 ml-auto pt-2">
-            <button type="submit" class="btn btn-primary btn-sm" title="Buscar">
+        <div class="col-md-2 col-sm-12 ml-auto p-1">
+            <button type="submit" class="button btn btn-outline-primary btn-lg" id="searchMetrics">
             <i class="fas fa-search"></i>{{ __('Get metrics') }}
             </button>
         </div>
