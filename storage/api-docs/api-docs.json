@@ -1,0 +1,220 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Broobe Metrics",
+        "description": "",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/list-history-metrics": {
+            "get": {
+                "tags": [
+                    "History Metric Run"
+                ],
+                "summary": "List metric history",
+                "operationId": "34b9a2be0537c941688faf0899a153c5",
+                "responses": {
+                    "200": {
+                        "description": "Returns the list of metrics",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "expired": false
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error listing metric history",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "message": "Error listing metric history"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/get-metrics": {
+            "get": {
+                "tags": [
+                    "History Metric Run"
+                ],
+                "summary": "Get the metrics according to url",
+                "operationId": "805b3eea1ee9b94be960350c92c28f7f",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "The URL of the page to obtain metrics",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "strategy",
+                        "in": "query",
+                        "description": "The strategy to use for obtaining metrics",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "categories",
+                        "in": "query",
+                        "description": "The categories of metrics to obtain",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ACCESSIBILITY",
+                                    "PWA",
+                                    "PERFORMANCE",
+                                    "SEO",
+                                    "BEST PRACTICES"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the metrics for the specified URL",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "Performance": 0.75,
+                                    "Accessibility": 0.8,
+                                    "SEO": 0.9
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "error": "Internal server error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/save-metrics": {
+            "post": {
+                "tags": [
+                    "History Metric Run"
+                ],
+                "summary": "Saves metrics in database",
+                "description": "Endpoint to save metrics in the database.",
+                "operationId": "d414fa950781981fefdf2f559f8afd93",
+                "requestBody": {
+                    "description": "Metrics data to be saved",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "url",
+                                    "strategy",
+                                    "categories"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "description": "The URL for which metrics are being saved",
+                                        "type": "string"
+                                    },
+                                    "strategy": {
+                                        "description": "The strategy associated with the metrics",
+                                        "type": "string"
+                                    },
+                                    "categories": {
+                                        "description": "Object containing metric categories with scores",
+                                        "properties": {
+                                            "Accessibility": {
+                                                "description": "Accessibility score value",
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "PWA": {
+                                                "description": "PWA score value",
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "Performance": {
+                                                "description": "Performance score value",
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "SEO": {
+                                                "description": "SEO score value",
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "Best Practices": {
+                                                "description": "Best Practices score value",
+                                                "type": "number",
+                                                "format": "float"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "message": "Metrics saved successfully"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "error": "Error message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
