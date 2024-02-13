@@ -13,5 +13,9 @@
     "Performance": "Rendimiento",
     "PERFORMANCE": "RENDIMIENTO",
     "Metrics gets successfully": "Metricas obtenidas con exito",
-    "Error gets metrics": "Error al obtener las metricas"
+    "Error gets metrics": "Error al obtener las metricas",
+    "Error listing metrics": "Error al listar las metricas",
+    "Get metrics": "Obtener metricas",
+    "Save metric run": "Guardar metricas",
+    "Example": "Ejemplo"
 }

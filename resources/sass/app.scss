@@ -1,8 +1,111 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Archivo');
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
 
 // Variables
 @import 'variables';
 
+$primary-color: #503FE0 !default;
+$secondary-color: #E23E80 !default;
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import 'toastr/build/toastr.min.css';
+@import 'select2/dist/css/select2.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Museo+Slab:wght@400;700&display=swap');
+
+.body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-purple {
+  background-color: $primary-color;
+}
+
+.btn-outline-primary {
+    color: $secondary-color;
+    border-color: $secondary-color;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+}
+.btn-outline-primary:disabled {
+    color: gray;
+    border-color: $secondary-color;
+}
+
+.select2-container .select2-results__option {
+    background-color: #f8fafc;
+    color: #333;
+}
+
+.select2-container .select2-results__option:hover {
+    background-color: $primary-color;
+    color: #fff;
+}
+.select2-container .select2-results__option[aria-selected=true] {
+    background-color: $primary-color;
+    color: #fff;
+}
+.form-floating {
+  .select2-container--default {
+    .select2-selection--multiple {
+      padding-top: 1.435rem;
+      padding-bottom: 0.625rem;
+      background-color: #f8fafc;
+      border-color: #dee2e6;
+    }
+    .select2-selection--single{
+      padding-left: 8px;
+      padding-top: 1.435rem;
+      padding-bottom: 2.066rem;
+      background-color: #f8fafc;
+      border-color: #dee2e6;
+    }
+  }
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: $primary-color;
+  position: relative;
+  animation: l24 1s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+.loader:after {
+  animation-duration: 4s;
+}
+@keyframes l24 {
+  100% {transform: rotate(1turn)}
+}
+.button {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+  color: $primary-color;
+  border: none;
+  border-color: #dee2e6;
+  text-decoration: none;
+}

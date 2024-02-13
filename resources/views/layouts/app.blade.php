@@ -6,6 +6,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+        <link rel="icon" href="{{ asset('img/logo-bm.png') }}" type="image/x-icon">
         <title>@yield('title') | {{ config('app.name') }}</title>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -18,5 +19,5 @@
         </div>
     </body>
 
-    @yield('partials.scripts')
+    @include('layouts.script')
 </html>
